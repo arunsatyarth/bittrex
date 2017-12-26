@@ -41,6 +41,14 @@ module Bittrex
       orders
     end
 
+    def self.buy (market,quantity, price)
+      debugger
+      client.post('market/buylimit',
+        {market: 'BTC-SC',
+        quantity: 600,
+        price: 0.000001})['uuid'] 
+    end
+
     def self.open
       client.get('market/getopenorders').map{|data| new(data) }
     end
